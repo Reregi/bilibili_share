@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      .intro_box {
+        width: 510px;
+        height: 290px;
+        padding: 25px;
+        box-sizing: border-box;
+      }
+      .intro_box .title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2; /*行数*/
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .intro_box .content {
+        display: flex;
+      }
+      .intro_box .content .left {
+        font-size: 25px;
+        color: #848484;
+        font-weight: 600;
+      }
+      .intro_box .content .left .uploader_name {
+        width: 230px;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2; /*行数*/
+      }
+      .intro_box .content .right {
+        display: flex;
+        justify-content: space-between;
+        flex: 1;
+      }
+      .qrCode_box,
+      .sketch_box {
+        width: 103px;
+        height: 103px;
+        background-color: pink;
+      }
+      .qrCode_box img,
+      .sketch_box img {
+        width: 100%;
+      }
+      .intro_box .footer {
+        height: 45px;
+        padding: 12px 0;
+        box-sizing: border-box;
+        border-top: 1px solid #828282;
+        margin-top: 10px;
+      }
+      .intro_box .footer img {
+        height: 100%;
+      }
+      .intro_box .footer span {
+        font-size: 25px;
+        color: #828282;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 视频简介信息 -->
+    <div class="intro_box">
+      <!-- 标题 -->
+      <div class="title">
+        一起坠机吗？一起坠机吗？一起坠机吗？一起坠机吗？一起坠机吗？一起坠机吗？一起坠机吗？
+      </div>
+      <!-- 内容栏 -->
+      <div class="content">
+        <!-- 视频信息 -->
+        <div class="left">
+          <div class="uploader_name">
+            up主：
+            <span>ACI中文字幕组ACICFG</span>
+          </div>
+          <div class="view">
+            16.1万播放
+          </div>
+        </div>
+        <div class="right">
+          <div class="qrCode_box">
+            <img src="" alt="" />
+          </div>
+          <div class="sketch_box">
+            <img src="" alt="" />
+          </div>
+        </div>
+      </div>
+      <!-- 底部栏 -->
+      <div class="footer">
+        <img src="./bilibili.png" alt="" />
+        <span>哔哩哔哩</span>
+      </div>
+    </div>
+  </body>
+</html>
