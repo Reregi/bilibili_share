@@ -6,11 +6,12 @@ const sketch = document.querySelector(".sketch_box img"); //缩略图
 
 title.onclick = function () {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    console.log(chrome.storage);
-    chrome.tabs.sendMessage(tabs[0].id, { greeting: "hello" }, function (
-      response
-    ) {
-      console.log(response.farewell);
-    });
+    chrome.tabs.sendMessage(
+      tabs[0].id,
+      { cmd: "GetVideoInfo" },
+      function (response) {
+        console.log("来自content的回复：" + response);
+      }
+    );
   });
 };
