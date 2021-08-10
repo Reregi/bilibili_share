@@ -3,11 +3,14 @@
   "description": "Base Level Extension",
   "version": "1.0",
   "manifest_version": 2,
-  "permissions": ["declarativeContent", "storage"],
+  "permissions": ["declarativeContent", "storage", "tabs", "runtime"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [
+    { "matches": ["https://*.bilibili.com/*"], "js": ["content.js"] }
+  ],
   "page_action": {
     "default_popup": "popup.html",
     "default_icon": "logo.png"

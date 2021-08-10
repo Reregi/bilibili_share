@@ -4,9 +4,13 @@ const view = document.querySelector(".view"); //播放数
 const qrcode = document.querySelector(".qrCode_box img"); //二维码
 const sketch = document.querySelector(".sketch_box img"); //缩略图
 
-console.log(qrcode);
-console.log(sketch);
-
-title.addEventListener("click", function () {
-  console.log(1);
-});
+title.onclick = function () {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    console.log(chrome.storage);
+    chrome.tabs.sendMessage(tabs[0].id, { greeting: "hello" }, function (
+      response
+    ) {
+      console.log(response.farewell);
+    });
+  });
+};
