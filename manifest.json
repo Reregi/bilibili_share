@@ -1,6 +1,6 @@
 {
-  "name": "Hello Extensions",
-  "description": "哔哩哔哩分享",
+  "name": "哔哩哔哩视频分享",
+  "description": "一键生成分享海报",
   "version": "1.0",
   "manifest_version": 2,
   "permissions": ["declarativeContent", "storage", "tabs"],
