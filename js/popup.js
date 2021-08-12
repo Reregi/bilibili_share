@@ -80,7 +80,11 @@ function getBase64(url) {
 }
 
 
-
+/**
+ * [获取剪贴板权限]
+ *
+ * @return  {[string|boolean]}  [权限]
+ */
 async function askWritePermission() {
   try {
     const {
@@ -94,18 +98,24 @@ async function askWritePermission() {
   }
 }
 
-
+/**
+ * [图片写入剪贴板]
+ *
+ * @return  {[type]}  [return description]
+ */
 function writeDataToClipboard() {
   if (askWritePermission()) {
     if (navigator.clipboard && navigator.clipboard.write) {
+      //图片转为-blob才能被复制-此处直接在转换blob的回调进行复制
       let canvas = document.createElement("canvas");
       let ctx = canvas.getContext("2d");
       const img = document.querySelector('.share_img img')
       canvas.height = img.height;
       canvas.width = img.width;
       ctx.drawImage(img, 0, 0);
-      canvas.toBlob;
+      //转换成blob格式
       canvas.toBlob(async function (imageBlob) {
+        //创建剪贴板对象写入图片blob数据
         try {
           const item = new ClipboardItem({
             [imageBlob.type]: imageBlob,
