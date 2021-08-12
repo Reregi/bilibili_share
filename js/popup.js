@@ -1,13 +1,14 @@
-const intro_box = document.querySelector(".intro_box"); //分享界面
-const title = document.querySelector(".title"); //标题
-const uploader_name = document.querySelector(".uploader_name span"); //up主名
-const view = document.querySelector(".view"); //播放数
-const qrcode = document.querySelector(".qrCode_box"); //二维码
-const sketch = document.querySelector(".sketch_box img"); //视频封面
-const get = document.querySelector(".get"); //获取按钮
-const copy = document.querySelector(".copy"); //复制按钮
+//获取对应页面元素
+const intro_box = document.querySelector(".intro_box");
+const title = document.querySelector(".title");
+const uploader_name = document.querySelector(".uploader_name span");
+const view = document.querySelector(".view");
+const qrcode = document.querySelector(".qrCode_box");
+const sketch = document.querySelector(".sketch_box img");
+const get = document.querySelector(".get");
+const copy = document.querySelector(".copy");
 
-//点击获取按钮
+// 点击获取按钮
 get.onclick = function () {
   chrome.tabs.query({
     active: true,
@@ -123,7 +124,7 @@ function writeDataToClipboard() {
           await navigator.clipboard.write([item]);
           alert("复制成功！");
         } catch (error) {
-          alert("复制成功！"+error);
+          alert("复制成功！" + error);
 
         }
       });
