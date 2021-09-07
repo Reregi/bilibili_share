@@ -17,6 +17,7 @@
 
 ## 问题与建议
 **请移步到issues**
+[issues]<https://github.com/Reregi/bilibili_share/issues>
 
 ## 特别鸣谢
 * KoroLin
