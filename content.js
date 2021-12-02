@@ -14,12 +14,16 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       const sketch = document
         .querySelector('meta[itemprop="image"]')
         .getAttribute("content");
+      const avatar = document
+        .querySelector(".r-con .bili-avatar-face")
+        .getAttribute("src");
       //发送回扩展程序
       sendResponse({
         title,
         uploader_name,
         view,
         sketch,
+        avatar,
         href: location.href,
       });
     }
