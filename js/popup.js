@@ -1,14 +1,14 @@
-//获取对应页面元素
-const intro_box = document.querySelector(".intro_box");
-const title = document.querySelector(".title");
-const uploader_name = document.querySelector(".uploader_name span");
-const view = document.querySelector(".view");
-const qrcode = document.querySelector(".qrCode_box");
-const sketch = document.querySelector(".sketch_box img");
-const get = document.querySelector(".get");
-const copy = document.querySelector(".copy");
+const intro_box = document.querySelector(".intro_box"); //分享界面
+const title = document.querySelector(".title"); //标题
+const uploader_name = document.querySelector(".uploader_name span"); //up主名
+const view = document.querySelector(".view"); //播放数
+const qrcode = document.querySelector(".qrCode_box"); //二维码
+const sketch = document.querySelector(".sketch_box img"); //视频封面
+const get = document.querySelector(".get"); //获取按钮
+const copy = document.querySelector(".copy"); //复制按钮
+const avatar = document.querySelector(".avatar");
 
-// 点击获取按钮
+//点击获取按钮
 get.onclick = function () {
   chrome.tabs.query({
     active: true,
@@ -25,6 +25,7 @@ get.onclick = function () {
           uploader_name.innerText = response.uploader_name;
           view.innerText = response.view;
           sketch.src = await getBase64(response.sketch);
+          // avatar.src = await getBase64(response.avatar);
           //生成二维码
           new QRCode(qrcode, {
             text: response.href,
@@ -81,11 +82,7 @@ function getBase64(url) {
 }
 
 
-/**
- * [获取剪贴板权限]
- *
- * @return  {[string|boolean]}  [权限]
- */
+
 async function askWritePermission() {
   try {
     const {
@@ -99,24 +96,18 @@ async function askWritePermission() {
   }
 }
 
-/**
- * [图片写入剪贴板]
- *
- * @return  {[type]}  [return description]
- */
+
 function writeDataToClipboard() {
   if (askWritePermission()) {
     if (navigator.clipboard && navigator.clipboard.write) {
-      //图片转为-blob才能被复制-此处直接在转换blob的回调进行复制
       let canvas = document.createElement("canvas");
       let ctx = canvas.getContext("2d");
       const img = document.querySelector('.share_img img')
       canvas.height = img.height;
       canvas.width = img.width;
       ctx.drawImage(img, 0, 0);
-      //转换成blob格式
+      canvas.toBlob;
       canvas.toBlob(async function (imageBlob) {
-        //创建剪贴板对象写入图片blob数据
         try {
           const item = new ClipboardItem({
             [imageBlob.type]: imageBlob,
@@ -124,7 +115,7 @@ function writeDataToClipboard() {
           await navigator.clipboard.write([item]);
           alert("复制成功！");
         } catch (error) {
-          alert("复制成功！" + error);
+          alert("复制成功！"+error);
 
         }
       });
