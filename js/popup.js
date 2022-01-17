@@ -25,6 +25,7 @@ get.onclick = function () {
           uploader_name.innerText = response.uploader_name;
           view.innerText = response.view;
           sketch.src = await getBase64(response.sketch);
+          console.log(response);
           // avatar.src = await getBase64(response.avatar);
           //生成二维码
           new QRCode(qrcode, {

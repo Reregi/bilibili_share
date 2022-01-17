@@ -24,7 +24,46 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         view,
         sketch,
         avatar,
-        href: location.href,
+        href: location.href.split("?")[0],
+      });
+    }
+    //番组
+    else if (location.href.includes("/bangumi/")) {
+      const title = document.querySelector('meta[property="og:title"]').content;
+      const uploader_name = "bilibili番剧";
+      const view = document
+        .querySelector(".media-count")
+        .innerText.split("·")[0];
+      const sketch = document.querySelector(
+        'meta[property="og:image"]'
+      ).content;
+      //发送回扩展程序
+      sendResponse({
+        title,
+        uploader_name,
+        view,
+        sketch,
+        href: location.href.split("?")[0],
+      });
+    }
+    //直播
+    else if (location.href.includes("live")) {
+      const title = document.querySelector(
+        '.live-title .title-length-limit'
+      ).innerText;
+      const uploader_name = document.querySelector(
+        ".room-owner-username"
+      ).innerText;
+      const view = document.querySelectorAll('.action-text')[2].innerText;
+      const sketch =
+        "https://i0.hdslb.com/bfs/live/d63e78ade2319108390b1d6a59a81b2abe46925d.png";
+      //发送回扩展程序
+      sendResponse({
+        title,
+        uploader_name,
+        view,
+        sketch,
+        href: location.href.split("?")[0],
       });
     }
     //非视频页
