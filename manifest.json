@@ -1,17 +1,16 @@
 {
   "name": "哔哩哔哩视频分享",
   "description": "一键生成分享海报",
-  "version": "1.1",
-  "manifest_version": 2,
+  "version": "2.0",
+  "manifest_version": 3,
   "permissions": ["declarativeContent", "storage", "tabs"],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
   "content_scripts": [
     { "matches": ["https://*.bilibili.com/*"], "js": ["content.js"] }
   ],
-  "page_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": "./img/logo.png"
   },

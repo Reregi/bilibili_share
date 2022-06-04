@@ -4,19 +4,18 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     //视频页
     if (location.href.includes("/video/")) {
       //获取标题、up主名、播放量、视频封面
-      const title = document.querySelector(".tit").innerText;
-      const uploader_name = document.querySelector(
-        ".up-info .up-info_right .name .username"
-      ).innerText;
-      const view = document
-        .querySelector(".video-info .video-data span")
-        .innerText.replace(" · ", "");
-      const sketch = document
-        .querySelector('meta[itemprop="image"]')
-        .getAttribute("content");
-      const avatar = document
-        .querySelector(".r-con .bili-avatar-face")
-        .getAttribute("src");
+      const title = document
+        .querySelector("meta[name=title]")
+        .content.replace("_哔哩哔哩_bilibili", "");
+      const uploader_name = document.querySelector("meta[name=author]").content;
+      const view = document.querySelector(".view.item").innerText
+      const sketch = document.querySelector('meta[itemprop="image"]').content
+      const avatar = document.querySelector(".right-container .bili-avatar-face").src
+      console.log(  title,
+        uploader_name,
+        view,
+        sketch,
+        avatar);
       //发送回扩展程序
       sendResponse({
         title,
@@ -49,12 +48,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     //直播
     else if (location.href.includes("live")) {
       const title = document.querySelector(
-        '.live-title .title-length-limit'
+        ".live-title .title-length-limit"
       ).innerText;
       const uploader_name = document.querySelector(
         ".room-owner-username"
       ).innerText;
-      const view = document.querySelectorAll('.action-text')[2].innerText;
+      const view = document.querySelectorAll(".action-text")[2].innerText;
       const sketch =
         "https://i0.hdslb.com/bfs/live/d63e78ade2319108390b1d6a59a81b2abe46925d.png";
       //发送回扩展程序
