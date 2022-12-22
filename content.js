@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         title,
         uploader_name,
         view,
-        sketch,
+        sketch:sketch.replace('//','http://'),
         avatar,
         href: location.href.split("?")[0],
       });
